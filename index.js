@@ -1,11 +1,20 @@
-const express = require('express')
 const bodyParser = require('body-parser')
+const express = require('express')
+const morgan = require('morgan')
+const cors = require('cors')
 const ip = require('ip')
-const app = express()
 const fs = require('fs')
+const app = express()
 const PORT = 6666
 
+// Add cors support
+app.use(cors())
+
+// Used to parse body from post requests
 app.use(bodyParser.json())
+
+// Add morgan as request logger on dev level
+app.use(morgan('dev'))
 
 app.post('*', function (req, res) {
 	const txtFileName = `./logs/${Date.now()}.json`
