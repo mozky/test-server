@@ -11,7 +11,9 @@ const PORT = 6666
 app.use(cors())
 
 // Used to parse body from post requests
-app.use(bodyParser.json())
+app.use(bodyParser.json({
+	limit: '1mb'
+}))
 
 // Add morgan as request logger on dev level
 app.use(morgan('dev'))
