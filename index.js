@@ -22,13 +22,12 @@ app.post('*', function (req, res) {
 	const txtFileName = `./logs/${Date.now()}.json`
 	fs.writeFile(txtFileName, JSON.stringify(req.body, null, 2), (err) => {
 		if (err) throw err
-		console.log(`POST request to ${req.originalUrl} saved to ${txtFileName}`)
+		console.log(`Saved body from ${req.originalUrl} to ${txtFileName}`)
 	})
 	res.send('200')
 })
 
 app.get('*', function (req, res) {
-	console.log('good')
 	res.send('200')
 })
 
