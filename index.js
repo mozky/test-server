@@ -18,6 +18,7 @@ app.use(bodyParser.json({
 // Add morgan as request logger on dev level
 app.use(morgan('dev'))
 
+//Add better logs for the server
 app.post('*', function (req, res) {
 	const txtFileName = `./logs/${Date.now()}.json`
 	fs.writeFile(txtFileName, JSON.stringify(req.body, null, 2), (err) => {
